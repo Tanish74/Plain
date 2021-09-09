@@ -1,5 +1,3 @@
-vowels = ['a','e','i','o','u']
-space = ' '
 
 def getLength(x):
     length = 0
@@ -17,7 +15,33 @@ def compress(data):
         else:
             compress.append(data[i])
 
-    for i in range(len(compress)):
-        print(compress[i],end = "")
+    l2 = getLength(compress)
 
-print(compress('Tanish is a good boy'))
+    return compress
+        
+
+def decompress(data):
+    length = getLength(data)
+    ans = []
+
+    for i in range(length):
+        if data[i]=="*":
+            ans.append(" ")
+        else:
+            ans.append(data[i])
+
+    l2 = getLength(ans)
+
+    return ans
+
+comp = compress('There is a tree nearby')
+
+for el in comp:
+    print(el,end="")
+
+decomp = decompress(comp)
+
+print(" ")
+
+for tr in decomp:
+    print(tr,end="")
