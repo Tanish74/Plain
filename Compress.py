@@ -1,4 +1,5 @@
-
+vowels = ['a','e','i','o','u']
+number = [1,2,3,4,5]
 def getLength(x):
     length = 0
     for i in x:
@@ -12,10 +13,17 @@ def compress(data):
     for i in range(length):
         if data[i]==" ":
            compress.append('*')
+        elif data[i] in vowels:
+            for v in range(5):
+                if vowels[v] == data[i]:
+                    if v == 0:
+                        compress.append('@')
+                    else:
+                        compress.append(vowels[v])
+        elif data[i] == 'b':
+            compress.append('&')
         else:
             compress.append(data[i])
-
-    l2 = getLength(compress)
 
     return compress
         
@@ -27,10 +35,14 @@ def decompress(data):
     for i in range(length):
         if data[i]=="*":
             ans.append(" ")
+        elif data[i]=='@':
+            ans.append("a")
+        elif data[i]=='&':
+            ans.append('b')
+        # elif data[i] in number:
+        #     ans.append(vowels[i-1])
         else:
             ans.append(data[i])
-
-    l2 = getLength(ans)
 
     return ans
 
